@@ -2,8 +2,8 @@ from parser import parse_fasta
 
 def main():
 
-    parse_fasta('SARS-CoV-2 genome.fasta')
-
+    sequences = parse_fasta('mus-musculus-hemoglobin.fasta')
+    print(sequences)
 
 
 
