@@ -6,6 +6,8 @@ class TestParser(unittest.TestCase):
     def setUpTestFile(self):
         pass
 
+
+
     def test_parse_fasta(self):
 
         with tempfile.NamedTemporaryFile(mode='w', delete=False) as my_temp_file:
