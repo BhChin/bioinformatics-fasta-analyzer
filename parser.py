@@ -1,5 +1,8 @@
 
-def parse_fasta(filename):
+def parse_fasta(filename) -> list:
+    '''opens a fasta file and stores tuple pairs
+     containing a header and its corresponding sequence'''
+
     results = []
     header = None
     sequence_parts = []
