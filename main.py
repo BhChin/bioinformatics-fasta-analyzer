@@ -11,6 +11,7 @@ def main():
     #1. gc_content
     #2. at_content
     #3 sequence length
+    #4 nucleotide frequency
 
     #calculate comparable stats between different dna sequences
 
