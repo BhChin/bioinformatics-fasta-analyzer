@@ -13,13 +13,13 @@ def main():
     #3 sequence length
     #4 nucleotide frequency
 
+
     #calculate comparable stats between different dna sequences
 
 
 
 
     sequences = parse_fasta('mus-musculus-hemoglobin.fasta')
-    print(sequences)
 
 
 

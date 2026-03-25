@@ -1,3 +1,4 @@
+from calculation import *
 class Sequence:
     def __init__(self, header, sequence):
         self._header = header[1:]
@@ -9,14 +10,12 @@ class Sequence:
     def header(self):
         return self._header
 
-    def gc_content(self):
-        '''returns amount of G and C in a sequence'''
-        count = 0
-        for x in self._sequence:
-            if x == 'C' or x == 'G':
-                count +=1
+    def sequence_length(self):
+        return len(self._sequence)
 
-        return count/2
+    def gc_content(self):
+        '''returns the percentage of G and C'''
+        return calculate_gc(self._sequence)
 
 
 
