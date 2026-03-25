@@ -6,6 +6,15 @@ def main():
     #create class representing each individual sequence
     #which will have callable methods such as GC content
 
+    #wtd
+    #calculate individual dna sequence stats
+    #1. gc_content
+    #2. at_content
+    #3 sequence length
+
+    #calculate comparable stats between different dna sequences
+
+
 
 
     sequences = parse_fasta('mus-musculus-hemoglobin.fasta')
