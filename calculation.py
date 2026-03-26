@@ -22,7 +22,14 @@ def calculate_at(sequence: str) -> float:
 
 def find_codons(sequence: str) -> dict:
     '''finds 3-mer sequences of a sequence'''
-    pass
+    codons = {}
+    for x in range(len(sequence) - 2):
+        if sequence[x:x + 3] not in codons:
+            codons[sequence[x:x + 3]] = 1
+        else:
+            codons[sequence[x:x + 3]] += 1
+
+    return codons
 
 def find_dimers(sequence: str) -> dict:
     '''finds 2-mer sequences of a sequence'''

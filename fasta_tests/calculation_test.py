@@ -17,3 +17,7 @@ class TestCalculation(unittest.TestCase):
         self.assertEqual(find_dimers('ATCG'), {'AT': 1, 'TC': 1, 'CG': 1})
         self.assertEqual(find_dimers('ATCGCG'), {'AT': 1, 'TC': 1, 'CG': 2, 'GC': 1})
         self.assertEqual(find_dimers('ATAT'), {'TA': 1, 'AT': 2})
+
+    def test_find_codons(self):
+        self.assertEqual(find_codons('ATCG'), {'ATC': 1, 'TCG': 1})
+        self.assertEqual(find_codons('ATATA'), {'ATA': 2, 'TAT': 1})
