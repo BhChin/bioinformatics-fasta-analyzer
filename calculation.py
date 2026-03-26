@@ -19,3 +19,19 @@ def calculate_at(sequence: str) -> float:
     percent_at = 100*(count/len(sequence))
 
     return percent_at
+
+def find_codons(sequence: str) -> dict:
+    '''finds 3-mer sequences of a sequence'''
+    pass
+
+def find_dimers(sequence: str) -> dict:
+    '''finds 2-mer sequences of a sequence'''
+    dimers = {}
+    for x in range(len(sequence)-1):
+        if sequence[x:x+2] not in dimers:
+            dimers[sequence[x:x+2]] = 1
+        else:
+            dimers[sequence[x:x+2]] += 1
+
+    return dimers
+
