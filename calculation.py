@@ -20,6 +20,18 @@ def calculate_at(sequence: str) -> float:
 
     return percent_at
 
+def count_nucleotides(sequence: str) -> dict:
+    '''counts nucleotides of a sequence'''
+
+    a = sequence.count('A')
+    t = sequence.count('T')
+    c = sequence.count('C')
+    g = sequence.count('g')
+
+    nucleotide = {'A': a, 'T': t, 'C': c, 'G': g}
+
+    return nucleotide
+
 def find_codons(sequence: str) -> dict:
     '''finds 3-mer sequences of a sequence'''
     codons = {}

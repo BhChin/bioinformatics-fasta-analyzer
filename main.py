@@ -15,8 +15,6 @@ def main():
     #5 codon frequency
     #
 
-
-
     #calculate comparable stats between different dna sequences
 
 
