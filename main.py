@@ -21,7 +21,7 @@ def main():
         fasta_path = input('Fasta Path: ')
 
 
-        if a == 'End':
+        if b == 'End':
             break
 
     sequences = parse_fasta('fasta_files/mus-musculus-hemoglobin.fasta')
