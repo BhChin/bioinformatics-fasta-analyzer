@@ -17,10 +17,16 @@ def main():
 
     #calculate comparable stats between different dna sequences
 
+    while True:
+        fasta_path = input('Fasta Path: ')
 
 
+        if a == 'End':
+            break
 
-    sequences = parse_fasta('mus-musculus-hemoglobin.fasta')
+    sequences = parse_fasta('fasta_files/mus-musculus-hemoglobin.fasta')
+    print(sequences)
+
 
 
 
