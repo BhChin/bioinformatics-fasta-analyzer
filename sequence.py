@@ -4,6 +4,9 @@ class Sequence:
         self._header = header[1:]
         self._sequence = sequence
 
+    def __repr__(self):
+        return f"{self._header}: {self._sequence}"
+
     def sequence(self):
         return self._sequence
 

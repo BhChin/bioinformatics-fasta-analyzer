@@ -3,7 +3,8 @@ from gui import run_gui
 
 
 def main():
-    return
+
+    print()
 #     #idea 1
 #     #create class representing each individual sequence
 #     #which will have callable methods such as GC content
