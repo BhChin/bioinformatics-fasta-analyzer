@@ -1,3 +1,9 @@
+def sequence_length(sequence: str) -> int:
+    return len(sequence)
+
+def reverse_sequence(sequence: str) -> str:
+    return sequence[::-1]
+
 def calculate_gc(sequence: str) -> float:
     '''calculates the percentage of G and C in a sequence'''
     count = 0
@@ -55,3 +61,45 @@ def find_dimers(sequence: str) -> dict:
 
     return dimers
 
+def complement(sequence: str, type: str) -> str:
+    if type == 'DNA':
+        return dna_complement(sequence)
+    else: # rna
+        return rna_complement(sequence)
+
+def dna_complement(sequence: str) -> str:
+    sequence_list = list(sequence)
+    for x in range(len(sequence_list)):
+        if sequence_list[x] == 'C':
+            sequence_list[x] = 'G'
+        elif sequence_list[x] == 'G':
+            sequence_list[x] = 'C'
+        elif sequence_list[x] == 'A':
+            sequence_list[x] = 'T'
+        elif sequence_list[x] == 'T':
+            sequence_list[x] = 'A'
+    result = ''.join(sequence_list)
+    return result
+
+def rna_complement(sequence: str) -> str:
+    sequence_list = list(sequence)
+    for x in range(len(sequence_list)):
+        if sequence_list[x] == 'C':
+            sequence_list[x] = 'G'
+        elif sequence_list[x] == 'G':
+            sequence_list[x] = 'C'
+        elif sequence_list[x] == 'A':
+            sequence_list[x] = 'U'
+        elif sequence_list[x] == 'U':
+            sequence_list[x] = 'A'
+
+    result = ''.join(sequence_list)
+    return result
+
+def reverse_complement(sequence: str, type: str) -> str:
+    '''returns the reverse complement of a sequence'''
+    if not sequence:
+        return ''
+
+    sequence = reverse_sequence(sequence)
+    return complement(sequence, type )

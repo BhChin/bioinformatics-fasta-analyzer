@@ -1,7 +1,7 @@
 from calculation import *
 class Sequence:
     def __init__(self, header, sequence):
-        self._header = header[1:]
+        self._header = header
         self._sequence = sequence
 
     def __repr__(self):
@@ -14,7 +14,8 @@ class Sequence:
         return self._header
 
     def sequence_length(self):
-        return len(self._sequence)
+        '''returns length of the sequence'''
+        return sequence_length(self._sequence)
 
     def nucleotides(self):
         '''returns dictionary of nucleotides of a sequence'''
