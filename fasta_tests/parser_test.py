@@ -4,7 +4,7 @@ from parser import parse_fasta
 
 class TestParser(unittest.TestCase):
     def test_parse_fasta(self):
-        with tempfile.NamedTemporaryFile(mode='w', delete=True) as my_temp_file:
+        with tempfile.NamedTemporaryFile(mode='w', delete=False) as my_temp_file:
             my_temp_file.write('>Apple\n')
             my_temp_file.write('CCCCTTTTAAAAGGGG\n')
 
@@ -15,4 +15,4 @@ class TestParser(unittest.TestCase):
 
             filename = my_temp_file.name
             self.assertEqual(parse_fasta(filename),
-                             [('>Apple', 'CCCCTTTTAAAAGGGG')])
+                             [('Apple', 'CCCCTTTTAAAAGGGG')])

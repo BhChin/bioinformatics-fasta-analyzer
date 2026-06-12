@@ -4,7 +4,6 @@ from gui import run_gui
 
 def main():
 
-    print()
 #     #idea 1
 #     #create class representing each individual sequence
 #     #which will have callable methods such as GC content
@@ -19,13 +18,14 @@ def main():
 #     #
 #
 #     #calculate comparable stats between different dna sequences
-#
-#     # while True:
-#     #     fasta_path = input('Fasta Path: ')
-#     #
-#     #
-#     #     if b == 'End':
-#     #         break
+    sequences = []
+    while True:
+        fasta_path = input('Fasta Path: ')
+
+        if fasta_path == 'END':
+            break
+
+        sequences.append(parse_fasta(fasta_path))
 #
 #     sequences = parse_fasta('fasta_files/mus-musculus-hemoglobin.fasta')
 #     print(sequences)

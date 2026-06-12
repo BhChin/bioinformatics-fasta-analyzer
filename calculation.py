@@ -20,6 +20,7 @@ def calculate_at(sequence: str) -> float:
 
     return percent_at
 
+
 def count_nucleotides(sequence: str) -> dict:
     '''counts nucleotides of a sequence'''
 

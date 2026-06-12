@@ -23,7 +23,7 @@ def parse_fasta(filename) -> list:
                 sequence_parts.append(line)
 
     if header is not None:
-        results.append((header, ''.join(sequence_parts)))
+        results.append((header[1:], ''.join(sequence_parts)))
 
     return results
 
