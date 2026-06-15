@@ -4,7 +4,10 @@ class Sequence:
         self._header = header
         self._sequence = sequence
 
-    def __repr__(self):
+    def __repr__(self): # representation for developer
+        return f"Sequence({self._header}: {self._sequence})"
+
+    def __str__(self): # user-friendly representation
         return f"{self._header}: {self._sequence}"
 
     def sequence(self):
