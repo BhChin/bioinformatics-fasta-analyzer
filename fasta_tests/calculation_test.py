@@ -43,4 +43,8 @@ class TestCalculation(unittest.TestCase):
         self.assertEqual(reverse_complement('AUAU', 'RNA'), 'AUAU')
         self.assertEqual(reverse_complement('', ''), '')
 
-    # def test_reverse_complement(self):
+    def test_find_kmers(self):
+        self.assertEqual(find_kmers('ATCGATC', 3), {'ATC': 2, 'TCG': 1, 'CGA': 1, 'GAT': 1})
+        self.assertEqual(find_kmers('ATAT', 2), {'AT': 2, 'TA': 1})
+        self.assertEqual(find_kmers('', 3), {})
+        self.assertEqual(find_kmers('AT', 3), {})

@@ -33,7 +33,7 @@ def count_nucleotides(sequence: str) -> dict:
     a = sequence.count('A')
     t = sequence.count('T')
     c = sequence.count('C')
-    g = sequence.count('g')
+    g = sequence.count('G')
 
     nucleotide = {'A': a, 'T': t, 'C': c, 'G': g}
 
@@ -60,6 +60,15 @@ def find_dimers(sequence: str) -> dict:
             dimers[sequence[x:x+2]] += 1
 
     return dimers
+
+def find_kmers(sequence: str, k) -> dict:
+    kmers = {}
+    for x in range(len(sequence) - k + 1):
+        if sequence[x:x+k] not in kmers:
+            kmers[sequence[x:x+k]] = 1
+        else:
+            kmers[sequence[x:x+k]] += 1
+    return kmers
 
 def complement(sequence: str, type: str) -> str:
     if type == 'DNA':
@@ -103,3 +112,4 @@ def reverse_complement(sequence: str, type: str) -> str:
 
     sequence = reverse_sequence(sequence)
     return complement(sequence, type )
+
