@@ -1,21 +1,41 @@
 import tkinter as tk
 from tkinter import ttk, filedialog
 
+from parser import parse_fasta
 
+
+def run_gui():
+    root = tk.Tk()
+    app = FastaAnalyzerGUI(root)
+    root.mainloop()
 
 
 class FastaAnalyzerGUI:
     def __init__(self, root):
         self.root = root
         self.root.title("FASTA Analyzer")
-        self.root.geometry("1000x600")
+        self.root.geometry("1400x800")
+
         self.file = None
+        self.sequences = []
 
         self.create_widgets()
 
     def open_file(self):
         self.file = filedialog.askopenfilename()
-        print(self.file)
+
+        if not self.file:
+            return
+
+        self.sequences = parse_fasta(self.file)
+        print(self.sequences)
+        self.list_sequences()
+
+    def list_sequences(self):
+        self.sequence_listbox.delete(0, tk.END)
+
+        for header, sequence in self.sequences:
+            self.sequence_listbox.insert(tk.END, header)
 
     def create_widgets(self):
         top_frame = ttk.Frame(self.root, padding=10)
@@ -27,19 +47,27 @@ class FastaAnalyzerGUI:
         file_open_button = ttk.Button(top_frame, text="Open FASTA File", command=self.open_file)
         file_open_button.pack(side="right")
 
-        main_frame = ttk.Frame(self.root, padding=10)
+        main_frame = ttk.Frame(self.root, padding=20)
         main_frame.pack(fill="both", expand=True)
 
-        left_frame = ttk.Frame(main_frame, width=250)
-        left_frame.pack(side="left", fill="y")
+        left_frame = ttk.Frame(main_frame, width=400)
+        left_frame.pack(side="left", fill="both", expand=False, padx=(0, 30))
 
         right_frame = ttk.Frame(main_frame)
-        right_frame.pack(side="right", fill="both", expand=True)
+        right_frame.pack(side="left", fill="both", expand=True, padx=(30, 0))
 
         ttk.Label(left_frame, text="Sequences", font=("Arial", 14, "bold")).pack(anchor="w")
 
-        self.sequence_listbox = tk.Listbox(left_frame)
+        # --- sequence list box ---
+        self.sequence_listbox = tk.Listbox(left_frame, width=50)
         self.sequence_listbox.pack(fill="both", expand=True, pady=10)
+
+        self.x_scrollbar = tk.Scrollbar(left_frame, orient="horizontal")
+        self.x_scrollbar.pack(fill="x")
+
+        self.sequence_listbox.config(xscrollcommand=self.x_scrollbar.set)
+        self.x_scrollbar.config(command=self.sequence_listbox.xview)
+        # --- sequence list box ---
 
         ttk.Label(right_frame, text="Stats", font=("Arial", 14, "bold")).pack(anchor="w")
 
@@ -66,13 +94,3 @@ class FastaAnalyzerGUI:
 
         self.output_box = tk.Text(right_frame, height=12)
         self.output_box.pack(fill="both", expand=True, pady=5)
-
-
-def main():
-    root = tk.Tk()
-    app = FastaAnalyzerGUI(root)
-    root.mainloop()
-
-
-if __name__ == "__main__":
-    main()
