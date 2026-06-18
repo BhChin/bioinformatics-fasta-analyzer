@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk, filedialog
-
+from sequence import Sequence
 from parser import parse_fasta
 
 
@@ -27,15 +27,18 @@ class FastaAnalyzerGUI:
         if not self.file:
             return
 
-        self.sequences = parse_fasta(self.file)
+        temp = parse_fasta(self.file)
+        for header, sequence in temp:
+             self.sequences.append(Sequence(header, sequence))
+
         print(self.sequences)
         self.list_sequences()
 
     def list_sequences(self):
         self.sequence_listbox.delete(0, tk.END)
 
-        for header, sequence in self.sequences:
-            self.sequence_listbox.insert(tk.END, header)
+        for sequence in self.sequences:
+            self.sequence_listbox.insert(tk.END, sequence)
 
     def create_widgets(self):
         top_frame = ttk.Frame(self.root, padding=10)
