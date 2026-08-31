@@ -70,6 +70,15 @@ def find_kmers(sequence: str, k) -> dict:
             kmers[sequence[x:x+k]] += 1
     return kmers
 
+def determineType(sequence: str) -> str:
+    sequence_type = ''
+
+    if 'T' in sequence:
+        sequence_type = 'DNA'
+    else:
+        sequence_type = 'RNA'
+    return sequence_type
+
 def complement(sequence: str, type: str) -> str:
     if type == 'DNA':
         return dna_complement(sequence)
