@@ -3,6 +3,7 @@ class Sequence:
     def __init__(self, header, sequence):
         self._header = header
         self._sequence = sequence
+        self._type = determineType(sequence)
 
     def __repr__(self): # representation for developer
         return f"Sequence({self._header}: {self._sequence})"
@@ -39,6 +40,10 @@ class Sequence:
     def codons(self):
         '''returns a sequences' codons'''
         return find_codons(self._sequence)
+
+    def complement(self):
+        '''returns a sequences' complement'''
+        return complement(self._sequence, self._type)
 
 
 

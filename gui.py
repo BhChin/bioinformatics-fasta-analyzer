@@ -59,7 +59,14 @@ class FastaAnalyzerGUI:
         self.sequence_label.config(state="disabled")
 
     def display_complement(self):
-        return
+        selected = self.sequence_listbox.curselection()
+
+        if not selected:
+            return
+
+        sequence = self.sequences[selected[0]]
+        self.output_box.delete("1.0", tk.END)
+        self.output_box.insert("1.0", sequence.complement())
 
     def display_reverse_complement(self):
         return
@@ -69,9 +76,9 @@ class FastaAnalyzerGUI:
 
     def create_buttons(self, button_frame):
         ttk.Button(button_frame, text="Display Stats", command=self.display_stats).pack(side="left", padx=5)
-        ttk.Button(button_frame, text="Complement").pack(side="left", padx=5)
-        ttk.Button(button_frame, text="Reverse Complement").pack(side="left", padx=5)
         ttk.Button(button_frame, text="Codon Frequency").pack(side="left", padx=5)
+        ttk.Button(button_frame, text="Complement", command=self.display_complement).pack(side="left", padx=5)
+        ttk.Button(button_frame, text="Reverse Complement", command=self.display_reverse_complement).pack(side="left",padx=5)
 
     def _create_top_bar(self):
         top_frame = ttk.Frame(self.root, padding=10)
