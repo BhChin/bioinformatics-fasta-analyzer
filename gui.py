@@ -42,6 +42,7 @@ class FastaAnalyzerGUI:
 
     def display_stats(self):
         selected = self.sequence_listbox.curselection()
+        #curselection returns a tuple that stores the index of the selected item
 
         if not selected:
             return
@@ -69,7 +70,14 @@ class FastaAnalyzerGUI:
         self.output_box.insert("1.0", sequence.complement())
 
     def display_reverse_complement(self):
-        return
+        selected = self.sequence_listbox.curselection()
+
+        if not selected:
+            return
+
+        sequence = self.sequences[selected[0]]
+        self.output_box.delete("1.0", tk.END)
+        self.output_box.insert("1.0", sequence.reverse_complement())
 
     def display_codon(self):
         return
