@@ -45,6 +45,10 @@ class Sequence:
         '''returns a sequences' complement'''
         return complement(self._sequence, self._type)
 
+    def reverse_complement(self):
+        '''returns a sequences' reverse complement'''
+        return reverse_complement(self._sequence, self._type)
+
 
 
 
